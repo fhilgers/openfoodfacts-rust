@@ -9,7 +9,7 @@ This implements a wrapper around Open Food Facts API in Rust.
 
 ## Installation
 In the __Cargo.toml__ file, under __[dependencies]__, add the following lines:
-```
+```toml
 openfoodfacts = { git = "https://github.com/openfoodfacts/openfoodfacts-rust.git"}
 reqwest = {version = "0.11", features = ["blocking", "json"]}
 serde_json = "1.0.73"
@@ -17,7 +17,7 @@ serde_json = "1.0.73"
 
 ## Examples
 _Get information about a product_
-```
+```rust
 let client = off::v0().build().unwrap();
 let code = "3850102123681";
 
@@ -27,7 +27,7 @@ let result_json = json!(response.json::<HashMap::<String, Value>>().unwrap());
 
 _Search products based on criteria_
 
-```
+```rust
 use openfoodfacts::{self as off, Locale, Output};
 use serde_json::{json, Value};
 use std::collections::HashMap;
@@ -75,7 +75,7 @@ List of methods of the client.
 | 7-Metadata             | nutrients              |  v  | let response = client.nutrients(`None`).unwrap();                                 |  x  | x           |
 
 `None` can be replaced by output parameters (language (country code, `cc`; and optional language code, `lc`), page, page_size, fields (fields is used to reduce the response to only the fields you need)):
-```
+```rust
 let output = Output::new()
     .locale(Locale::new("fr", None))
     .pagination(22, 20)
@@ -83,7 +83,7 @@ let output = Output::new()
 ```
 
 Whereas **query** can be created using criteria, ingredient, nutrient, as follows for v-0 and v-2, respectively:
-```v-0
+```rust
 let query = client
     .query()
     .criteria("brands", "contains", "Nestlé")
@@ -94,7 +94,7 @@ let query = client
     .nutrient("salt", "gt", 100);
 ```
 
-```v-0
+```rust
 let query = client
     .query()
     .criteria("brands", "Nestlé", Some("fr"))
