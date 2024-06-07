@@ -74,7 +74,9 @@
 pub use crate::client::{Error, HttpClient, HttpResponse, OffClient, Result};
 pub use crate::locale::Locale;
 pub use crate::output::Output;
-use crate::types::{Version, V0, V2};
+pub use crate::types::{V0, V2};
+
+use crate::types::Version;
 use std::env::consts::OS;
 
 mod client;

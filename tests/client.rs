@@ -10,7 +10,7 @@ fn taxonomy() {
         response.url().as_str(),
         "https://world.openfoodfacts.org/data/taxonomies/nova_groups.json"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -32,7 +32,7 @@ fn facet() {
         response.url().as_str(),
         "https://world.openfoodfacts.org/brands.json"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -48,7 +48,7 @@ fn facet_params() {
         response.url().as_str(),
         "https://fr.openfoodfacts.org/brands.json?page=22&fields=url&nocache=true"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -59,7 +59,7 @@ fn categories() {
         response.url().as_str(),
         "https://world.openfoodfacts.org/categories.json"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -72,7 +72,7 @@ fn categories_params() {
         response.url().as_str(),
         "https://fr.openfoodfacts.org/categories.json"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -83,7 +83,7 @@ fn nutrients() {
         response.url().as_str(),
         "https://world.openfoodfacts.org/cgi/nutrients.pl"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -96,7 +96,7 @@ fn nutrients_params() {
         response.url().as_str(),
         "https://fr.openfoodfacts.org/cgi/nutrients.pl"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -109,7 +109,7 @@ fn products_by_facet() {
         response.url().as_str(),
         "https://world.openfoodfacts.org/additive/e322-lecithins.json"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -126,7 +126,7 @@ fn products_by_facet_params() {
         response.url().as_str(),
         "https://fr.openfoodfacts.org/additif/e322-lecithines.json?page=22&page_size=20&fields=url"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -137,7 +137,7 @@ fn products_by_category() {
         response.url().as_str(),
         "https://world.openfoodfacts.org/category/cheeses.json"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -155,7 +155,7 @@ fn products_by_category_params() {
         response.url().as_str(),
         "https://fr.openfoodfacts.org/categorie/fromages.json?page=22&page_size=20&fields=url"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -166,7 +166,7 @@ fn product() {
         response.url().as_str(),
         "https://world.openfoodfacts.org/api/v0/product/069000019832"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -182,7 +182,7 @@ fn product_params() {
         response.url().as_str(),
         "https://fr.openfoodfacts.org/api/v0/product/069000019832?fields=url"
     );
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -199,7 +199,7 @@ fn search_v0() {
 
     let response = client.search(query, None).unwrap();
     assert_eq!(response.url().path(), "/cgi/search.pl");
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
 
 #[test]
@@ -214,5 +214,5 @@ fn search_v2() {
 
     let response = client.search(query, None).unwrap();
     assert_eq!(response.url().path(), "/api/v2/search");
-    assert_eq!(response.status().is_success(), true);
+    assert!(response.status().is_success());
 }
