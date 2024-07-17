@@ -7,11 +7,18 @@ use crate::locale::Locale;
 use crate::output::Output;
 use crate::search::{SearchQueryV0, SearchQueryV2};
 use crate::types::{Params, Version, V0, V2};
+
 pub use reqwest::blocking::{Client as HttpClient, Response as HttpResponse};
 use url::{ParseError, Url};
 
-/// The error type of all OffClient methods.
-pub type Error = Box<dyn std::error::Error>;
+#[derive(thiserror::Error, Debug)]
+pub enum Error {
+    #[error(transparent)]
+    Network(#[from] reqwest::Error),
+
+    #[error(transparent)]
+    Parse(#[from] ParseError),
+}
 
 /// The return type of all OffClient methods.
 pub type Result = std::result::Result<HttpResponse, Error>;
