@@ -101,7 +101,7 @@ impl<S> SearchQuery<S> {
     ) -> Result {
         let url = client.search_url(output.as_ref().and_then(|o| o.locale.as_ref()))?;
         let mut params = params.params();
-        if let Some(output_params) = output.map(|o| o.params(&["fields"])) {
+        if let Some(output_params) = output.map(|o| o.params(&["page", "page_size", "fields"])) {
             params.extend(output_params);
         }
         client.get(url, Some(&params))
