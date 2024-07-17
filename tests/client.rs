@@ -195,7 +195,8 @@ fn search_v0() {
         .ingredient("additives", "without")
         .ingredient("ingredients_that_may_be_from_palm_oil", "indifferent")
         .nutrient("fiber", "lt", 500)
-        .nutrient("salt", "gt", 100);
+        .nutrient("salt", "gt", 100)
+        .terms("cereals");
 
     let response = client.search(query, None).unwrap();
     assert_eq!(response.url().path(), "/cgi/search.pl");

@@ -286,7 +286,7 @@ impl OffClient<V0> {
 
 impl SearchUrl for OffClient<V0> {
     /// Returns the API V0 search URL.
-    ///  
+    ///
     /// `https://{locale}.openfoodfacts.org/cgi/search.pl`
     fn search_url(&self, locale: Option<&Locale>) -> std::result::Result<Url, ParseError> {
         let cgi_url = self.cgi_url(locale)?;
@@ -327,7 +327,7 @@ impl OffClient<V2> {
 
 impl SearchUrl for OffClient<V2> {
     /// Returns the API V2 search URL.
-    ///  
+    ///
     /// `https://{locale}.openfoodfacts.org/api/v2/search`
     fn search_url(&self, locale: Option<&Locale>) -> std::result::Result<Url, ParseError> {
         // Return the API URL with the locale given in Output::locale.

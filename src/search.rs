@@ -234,6 +234,14 @@ impl SearchQueryV0 {
         self
     }
 
+    pub fn terms(mut self, search_terms: &str) -> Self {
+        self.params.push((
+            format!("search_terms"),
+            Value::from(search_terms),
+        ));
+        self
+    }
+
     pub(crate) fn new() -> Self {
         Self::default()
     }
@@ -400,7 +408,8 @@ mod tests_search_v0 {
             .ingredient("additives", "without")
             .ingredient("ingredients_that_may_be_from_palm_oil", "indifferent")
             .nutrient("fiber", "lt", 500)
-            .nutrient("salt", "gt", 100);
+            .nutrient("salt", "gt", 100)
+            .terms("cereal");
 
         let params = query.params();
         assert_eq!(
@@ -423,6 +432,7 @@ mod tests_search_v0 {
                 ("nutriment_2", String::from("salt")),
                 ("nutriment_compare_2", String::from("gt")),
                 ("nutriment_value_2", String::from("100")),
+                ("search_terms", String::from("cereal")),
                 ("action", String::from("process")),
                 ("json", String::from("true"))
             ]
